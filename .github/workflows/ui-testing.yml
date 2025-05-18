@@ -1,0 +1,42 @@
+name: CopilotKit UI Testing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/copilot/**'
+      - 'packages/ui/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/copilot/**'
+      - 'packages/ui/**'
+  workflow_dispatch:
+
+jobs:
+  test-ui:
+    name: Test UI Components
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8.6.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build UI and Copilot packages
+        run: |
+          pnpm --filter "@kbstack/ui" build
+          pnpm --filter "@kbstack/copilot" build
+      - name: Run UI tests with CopilotKit
+        run: pnpm --filter "@kbstack/ui" test
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - name: Run CopilotKit tests
+        run: pnpm --filter "@kbstack/copilot" test
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

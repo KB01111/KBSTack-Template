@@ -1,0 +1,39 @@
+name: Temporal Workflow Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/temporal/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/temporal/**'
+  workflow_dispatch:
+
+jobs:
+  test-temporal:
+    name: Test Temporal Workflows
+    runs-on: ubuntu-latest
+    services:
+      temporal:
+        image: temporalio/auto-setup:1.22.4
+        ports:
+          - 7233:7233
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8.6.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build Temporal package
+        run: pnpm --filter "@kbstack/temporal" build
+      - name: Run Temporal tests
+        run: pnpm --filter "@kbstack/temporal" test
+        env:
+          TEMPORAL_ADDRESS: localhost:7233
