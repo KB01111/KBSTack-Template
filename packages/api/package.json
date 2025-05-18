@@ -15,10 +15,13 @@
     "@trpc/server": "^10.45.0",
     "orpc": "^1.2.0",
     "superjson": "^2.2.1",
+    "trpc-swagger": "^2.0.0",
+    "swagger-ui-react": "^5.10.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
+    "@types/swagger-ui-react": "^4.18.3",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3"
   }
