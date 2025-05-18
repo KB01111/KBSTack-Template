@@ -1,0 +1,25 @@
+{
+  "name": "@kbstack/api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@kbstack/db": "workspace:*",
+    "@trpc/client": "^10.45.0",
+    "@trpc/server": "^10.45.0",
+    "orpc": "^1.2.0",
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}

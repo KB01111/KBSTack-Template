@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Native",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "lib": ["es2019", "es2020.bigint", "es2020.date", "es2020.number", "es2020.promise", "es2020.string", "es2020.symbol.wellknown", "esnext"],
+    "module": "commonjs",
+    "target": "esnext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"]
+}
