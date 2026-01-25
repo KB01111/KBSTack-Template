@@ -13,7 +13,7 @@
   "dependencies": {
     "@copilotkit/react-core": "^0.18.0",
     "@copilotkit/react-textarea": "^0.18.0",
-    "@copilotkit/react-ui": "^0.18.0",
+    "@copilotkit/react-ui": "^1.8.13",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
